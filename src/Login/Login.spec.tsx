@@ -3,15 +3,14 @@ import { Login } from "./Login"
 
 const navigateMock = vi.fn();
 
-describe("Teste com mock e rotas", () => {
+describe("Testa o componente de login", () => {
+
     vi.mock("react-router-dom", () => ({
         useNavigate() {
             return navigateMock
         }
     }))
-});
 
-describe("Testa o componente de login", () => {
     test("Deve haver um title Sign in", async () => {
         render(<Login />);
         const title = await screen.findByRole("heading", {
