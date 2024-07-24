@@ -4,7 +4,17 @@ import { render, screen } from "@testing-library/react"
 import { Login } from "../Login/Login";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { Register } from "../Register/Register";
+import { fetchPokemonList } from "../servives/Services";
+import { faker } from "@faker-js/faker"
 
+const mockFetchListPokemonFn = vi.fn(fetchPokemonList).mockImplementation(async () => {
+    return [{
+        id: 1,
+        name: "pikachu",
+        image: faker.image.urlPlaceholder(),
+        type: "Eletric"
+    }]
+})
 
 describe("Testa o componente de rotas", () => {
     test("Deve renderizar a página de login", () => {
@@ -19,7 +29,7 @@ describe("Testa o componente de rotas", () => {
             },
             {
                 path: "/dashboard",
-                element: <Dashboard />,
+                element: <Dashboard fetchPokemonList={mockFetchListPokemonFn} />,
             },
             {
                 path: "/sing-up",

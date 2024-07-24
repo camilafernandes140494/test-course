@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { PokemonType } from "../types/PokemonType";
 
-export function Dashboard() {
+interface IProps {
+    fetchPokemonList: () => Promise<PokemonType[]>
+}
+export function Dashboard({ fetchPokemonList }: IProps) {
     const [pokemons, setPokemons] = useState<PokemonType[]>([]);
     useEffect(() => {
-        const loadData = async () => {
-            const response = await fetch('http://localhost:3000/pokemon');
-            const data = await response.json()
-            setPokemons(data);
-
-        }
-        loadData()
-
+        (async () => {
+            const data = await fetchPokemonList();
+            setPokemons(data)
+        })();
     }, []);
+
     return (
         <div className="h-screen flex flex-col items-center justify-center gap-2">
             <h1>Dashboard</h1>
