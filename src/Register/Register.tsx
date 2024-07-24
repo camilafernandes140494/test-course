@@ -1,8 +1,7 @@
 import { FormEvent } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export function Login() {
+export function Register() {
     const navigate = useNavigate()
 
     function handleSubmit(event: FormEvent) {
@@ -12,13 +11,14 @@ export function Login() {
     }
     return (
         <div className="h-screen flex flex-col items-center justify-center gap-2">
-            <h1>Login</h1>
+            <h1>Cadastre-se</h1>
             <form onClick={handleSubmit} className="flex flex-col items-center justify-center gap-2">
+                <input type="text" placeholder="Insira seu nome" />
                 <input type="text" placeholder="Insira seu e-mail" />
                 <input type="text" placeholder="Insira sua senha" />
-                <button>Entrar</button>
+                <button>Salvar</button>
             </form>
-            <Link to={'/sing-up'}>Não tem cadastro? Clique aqui!</Link>
+            <Link to={'/sing-up'}>Já tem cadastro? Clique aqui!</Link>
 
         </div>
 
