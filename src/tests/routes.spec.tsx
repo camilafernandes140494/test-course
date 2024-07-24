@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react"
 
 import { Login } from "../Login/Login";
 import { Dashboard } from "../Dashboard/Dashboard";
+import { Register } from "../Register/Register";
 
 
 describe("Testa o componente de rotas", () => {
@@ -20,13 +21,18 @@ describe("Testa o componente de rotas", () => {
                 path: "/dashboard",
                 element: <Dashboard />,
             },
+            {
+                path: "/sing-up",
+                element: <Register />
+            }
+
         ]);
 
         render(
             <RouterProvider router={router} />
         );
 
-        const title = screen.getByText('Sign in');
+        const title = screen.getByText('Login');
         expect(title).toBeInTheDocument();
     });
 });

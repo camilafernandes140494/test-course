@@ -8,13 +8,14 @@ describe("Testa o componente de login", () => {
     vi.mock("react-router-dom", () => ({
         useNavigate() {
             return navigateMock
-        }
+        },
+        Link: vi.fn().mockImplementation((props) => props.children)
     }))
 
-    test("Deve haver um title Sign in", async () => {
+    test("Deve haver um title Login", async () => {
         render(<Login />);
         const title = await screen.findByRole("heading", {
-            name: 'Sign in'
+            name: 'Login'
         });
         expect(title).toBeInTheDocument();
     });
@@ -28,7 +29,7 @@ describe("Testa o componente de login", () => {
     test("Deve haver um botão", async () => {
         render(<Login />);
         const button = await screen.findByRole("button");
-        expect(button.textContent).toBe('Login');
+        expect(button.textContent).toBe('Entrar');
     });
 
     test('Deve haver um input para e-mail', async () => {
@@ -48,5 +49,11 @@ describe("Testa o componente de login", () => {
         const button = await screen.findByRole("button");
         fireEvent.click(button)
         expect(navigateMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('Deve haver um link para tela de cadastro', async () => {
+        render(<Login />);
+        const link = await screen.getByText('Não tem cadastro? Clique aqui!')
+        expect(link).toBeInTheDocument()
     });
 })
