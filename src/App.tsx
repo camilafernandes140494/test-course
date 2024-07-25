@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Login } from "./Login/Login";
-import { Dashboard } from "./Dashboard/Dashboard";
-import { Register } from "./Register/Register";
+import { Login } from "./pages/Login/Login";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { Register } from "./pages/Register/Register";
 import { fetchPokemonList } from "./servives/Services";
 
 

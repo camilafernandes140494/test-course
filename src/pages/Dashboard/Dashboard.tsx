@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PokemonType } from "../types/PokemonType";
+import { PokemonType } from "../../types/PokemonType";
 
 interface IProps {
     fetchPokemonList: () => Promise<PokemonType[]>
