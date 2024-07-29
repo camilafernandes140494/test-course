@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PokemonType } from "../../types/PokemonType";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface IProps {
     fetchPokemonDetails: (id: number) => Promise<PokemonType>
@@ -24,6 +24,7 @@ export function PokemonDetails({ fetchPokemonDetails }: IProps) {
             <h1>{pokemon?.name}</h1>
             <img src={pokemon?.image} alt={pokemon?.name} />
             <strong>{pokemon?.type}</strong>
+            <Link to={'/dashboard'}>Voltar</Link>
 
         </div>
     )
