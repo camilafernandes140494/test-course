@@ -6,6 +6,7 @@ import { Dashboard } from "../pages/Dashboard/Dashboard";
 import { Register } from "../pages/Register/Register";
 import { fetchPokemonList } from "../servives/Services";
 import { faker } from "@faker-js/faker"
+import { PokemonDetails } from "../pages/PokemonDetails/PokemonDetails";
 
 const mockFetchListPokemonFn = vi.fn(fetchPokemonList).mockImplementation(async () => {
     return [{
@@ -30,6 +31,10 @@ describe("Testa o componente de rotas", () => {
             {
                 path: "/dashboard",
                 element: <Dashboard fetchPokemonList={mockFetchListPokemonFn} />,
+            },
+            {
+                path: "/pokemon-details/:id",
+                element: <PokemonDetails fetchPokemonDetails={mockFetchListPokemonFn} />,
             },
             {
                 path: "/sing-up",
